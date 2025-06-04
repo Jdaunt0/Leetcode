@@ -1,3 +1,4 @@
+#can be improved
 class Solution(object):
     def isAnagram(self, s, t):
         """
@@ -8,25 +9,20 @@ class Solution(object):
         if len(s) != len(t):
             return False
         
-        dict = {}
+        dictS, dictT = {}, {}
         
         for i in range(0, len(s)):
-            if s[i] not in dict:
-                dict[s[i]] = 1
+            if s[i] not in dictS:
+                dictS[s[i]] = 0
             else:
-                dict[s[i]] +=1
-        
-        for i in range(0, len(t)):
-            if t[i] not in dict:
-                return False
+                dictS[s[i]] += 1
             
-            if dict[t[i]] == 0:
-                return False
-            
-            if dict[t[i]] > 0:
-                dict[t[i]] -= 1
+            if t[i] not in dictT:
+                dictT[t[i]] = 0
+            else:
+                dictT[t[i]] += 1
 
-        return True
+        return dictS == dictT
 
 
 solution = Solution()
