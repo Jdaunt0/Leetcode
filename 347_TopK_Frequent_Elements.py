@@ -6,13 +6,10 @@ class Solution(object):
         :rtype: List[int]
         """
         dict = {} # key=num : value=count
-        count = [[] for i in range(len(nums))]
+        count = [[] for i in range(len(nums)+1)]
 
         for num in nums:
-            if num not in dict:
-                dict[num] = 0
-            else:
-                dict[num] += 1
+            dict[num] = 1 + dict.get(num,0)
         
         for key, value in dict.items():
             count[value].append(key)
